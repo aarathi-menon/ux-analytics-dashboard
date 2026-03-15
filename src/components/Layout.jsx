@@ -3,14 +3,18 @@ import { Link } from "react-router-dom";
 function Layout({ children }) {
   return (
     <div>
-      <nav style={{ padding: "20px", borderBottom: "1px solid #ccc" }}>
-        <Link to="/" style={{ marginRight: "20px" }}>Store</Link>
-        <Link to="/dashboard">Dashboard</Link>
+
+      <nav className="navbar">
+        <div className="container nav-links">
+          <Link to="/">Store</Link>
+          <Link to="/dashboard">Dashboard</Link>
+        </div>
       </nav>
 
-      <div style={{ padding: "20px" }}>
+      <div className="container">
         {children}
       </div>
+
     </div>
   );
 }
