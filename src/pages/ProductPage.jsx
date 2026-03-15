@@ -22,7 +22,7 @@ function ProductPage() {
 
       <h3>${product.price}</h3>
 
-      <button>
+      <button className="button-primary">
         Add to Cart
       </button>
 

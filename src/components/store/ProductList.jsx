@@ -4,16 +4,15 @@ import ProductCard from "./ProductCard";
 function ProductList() {
   return (
     <div>
+
       <h2>Products</h2>
 
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(200px,1fr))",
-        gap: "20px",
-        marginTop: "20px"
-      }}>
+      <div className="products-grid">
         {products.map(product => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard
+            key={product.id}
+            product={product}
+          />
         ))}
       </div>
 

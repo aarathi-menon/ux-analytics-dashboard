@@ -2,13 +2,21 @@ import { Link } from "react-router-dom";
 
 function ProductCard({ product }) {
   return (
-    <div className="card">
-      <h3>{product.name}</h3>
-      <p>${product.price}</p>
+    <div className="product-card">
 
-      <Link to={`/product/${product.id}`}>
+      <h3>{product.name}</h3>
+
+      <p className="product-price">
+        ${product.price}
+      </p>
+
+      <Link
+        className="button-primary"
+        to={`/product/${product.id}`}
+      >
         View Product
       </Link>
+
     </div>
   );
 }
