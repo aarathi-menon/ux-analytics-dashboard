@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import { products } from "../data/products";
+import { useEffect } from "react";
+import { trackEvent } from "../utils/tracking";
 
 function ProductPage() {
 
@@ -8,6 +10,10 @@ function ProductPage() {
   const product = products.find(
     p => p.id === parseInt(id)
   );
+
+  useEffect(() => {
+    trackEvent("product_view", `product_${id}`);
+  }, [id]);
 
   if (!product) {
     return <h2>Product not found</h2>;
@@ -22,7 +28,12 @@ function ProductPage() {
 
       <h3>${product.price}</h3>
 
-      <button className="button-primary">
+      <button
+        className="button-primary"
+        onClick={() =>
+          trackEvent("add_to_cart", `product_${product.id}`)
+        }
+      >
         Add to Cart
       </button>
 

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { trackEvent } from "../../utils/tracking";
 
 function ProductCard({ product }) {
   return (
@@ -13,6 +14,9 @@ function ProductCard({ product }) {
       <Link
         className="button-primary"
         to={`/product/${product.id}`}
+        onClick={() =>
+          trackEvent("product_click", `product_${product.id}`)
+        }
       >
         View Product
       </Link>
