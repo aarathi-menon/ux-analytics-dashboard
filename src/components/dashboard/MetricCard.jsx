@@ -1,8 +1,8 @@
 function MetricCard({ title, value }) {
   return (
-    <div className="card">
-      <h3>{title}</h3>
-      <h2>{value}</h2>
+    <div className="metric-card">
+      <p className="metric-title">{title}</p>
+      <h2 className="metric-value">{value}</h2>
     </div>
   );
 }

@@ -1,11 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
-
 import Home from "./pages/Home";
 import ProductPage from "./pages/ProductPage";
 import Dashboard from "./pages/Dashboard";
+import usePageTracking from "./hooks/usePageTracking";
 
 function App() {
+  
+  usePageTracking(); //automatic tracking
+
   return (
     <BrowserRouter>
       <Layout>

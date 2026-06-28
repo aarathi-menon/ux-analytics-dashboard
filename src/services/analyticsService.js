@@ -71,3 +71,31 @@ export function getPageVisits() {
     count
   }));
 }
+
+export function getUserJourneys() {
+  const events = getEvents();
+
+  const sessions = {};
+
+  // Group events by session
+  events.forEach(event => {
+    if (!sessions[event.sessionId]) {
+      sessions[event.sessionId] = [];
+    }
+
+    sessions[event.sessionId].push(event.page);
+  });
+
+  // Convert into journey strings
+  return Object.values(sessions).map(pages => {
+
+    const uniquePages = pages.filter(
+      (page, i) => page !== pages[i - 1]
+    );
+
+    return {
+      journey: uniquePages.join(" → "),
+      steps: uniquePages.length
+    };
+  });
+}

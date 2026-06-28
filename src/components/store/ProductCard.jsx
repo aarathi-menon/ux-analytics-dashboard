@@ -15,7 +15,10 @@ function ProductCard({ product }) {
         className="button-primary"
         to={`/product/${product.id}`}
         onClick={() =>
-          trackEvent("product_click", `product_${product.id}`)
+          trackEvent({
+            eventType: EVENT_TYPES.PRODUCT_CLICK,
+            elementId: `product_${product.id}`
+          })
         }
       >
         View Product

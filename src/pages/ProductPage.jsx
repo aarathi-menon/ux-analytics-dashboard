@@ -11,9 +11,12 @@ function ProductPage() {
     p => p.id === parseInt(id)
   );
 
-  useEffect(() => {
-    trackEvent("product_view", `product_${id}`);
-  }, [id]);
+    useEffect(() => {
+      trackEvent({
+        eventType: EVENT_TYPES.PRODUCT_VIEW,
+        elementId: `product_${id}`
+      });
+    }, [id]);
 
   if (!product) {
     return <h2>Product not found</h2>;
@@ -31,7 +34,10 @@ function ProductPage() {
       <button
         className="button-primary"
         onClick={() =>
-          trackEvent("add_to_cart", `product_${product.id}`)
+          trackEvent({
+            eventType: EVENT_TYPES.ADD_TO_CART,
+            elementId: `product_${product.id}`
+          })
         }
       >
         Add to Cart
